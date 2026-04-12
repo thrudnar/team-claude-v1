@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Claude</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    </div>
+    <span class="sidebar-title">Team Claude</span>
+  </div>
+  <ul class="nav-list">
+    <li class="nav-section">Team</li>
+    <li><a href="#roster"   class="nav-item" data-view="roster">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>Roster</span>
+    </a></li>
+    <li><a href="#projects" class="nav-item" data-view="projects">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span>Projects</span>
+    </a></li>
+    <li><a href="#tasks"    class="nav-item" data-view="tasks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>Tasks</span>
+    </a></li>
+    <li><a href="#hiring"   class="nav-item" data-view="hiring">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+      <span>Hiring</span>
+    </a></li>
+    <li class="nav-section">Job Hunt</li>
+    <li><a href="#jobs" class="nav-item" data-view="jobs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      <span>Jobs</span>
+    </a></li>
+    <li><a href="#scores" class="nav-item" data-view="scores">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span>Scores</span>
+    </a></li>
+    <li><a href="#applications" class="nav-item" data-view="applications">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <span>Applications</span>
+    </a></li>
+  </ul>
+</nav>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title"></span>
+      <button class="modal-close" onclick="closeModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body markdown" id="modal-body"></div>
+  </div>
+</div>
+
+<main class="main" id="app">
+  <div class="loading">Loading…</div>
+</main>
+
+<script>
+// ── Jobs state ────────────────────────────────────────────────
+let _jobsData = [];
+let _jobsSort = { col: null, dir: 1 };
+
+// ── Scores state ──────────────────────────────────────────────
+let _scoresData = [];
+let _scoresSort = { col: null, dir: 1 };
+let _visibleScoreIds = [];
+
+// ── Applications state ────────────────────────────────────────
+let _applicationsData = [];
+
+// ── LinkedIn harvester state ───────────────────────────────────
+let _harvestPollTimer = null;
+
+// ── Match scorer state ─────────────────────────────────────────
+let _scorerPollTimer = null;
+
+async function startHarvest() {
+  const btn = document.getElementById('harvest-btn');
+  const statusEl = document.getElementById('harvest-status');
+  if (!btn || btn.disabled) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Running…';
+  if (statusEl) statusEl.textContent = 'Running… (this may take several minutes)';
+
+  try {
+    const res = await fetch('/api/harvest/linkedin', { method: 'POST' });
+    if (res.status === 409) {
+      // Already running — start polling anyway
+    } else if (!res.ok) {
+      if (statusEl) statusEl.textContent = 'Failed to start harvester.';
+      btn.disabled = false;
+      btn.textContent = 'LinkedIn Jobs Pages';
+      return;
+    }
+  } catch (e) {
+    if (statusEl) statusEl.textContent = 'Failed to start harvester.';
+    btn.disabled = false;
+    btn.textContent = 'LinkedIn Jobs Pages';
+    return;
+  }
+
+  startHarvestPolling();
+}
+
+function startHarvestPolling() {
+  if (_harvestPollTimer) return;
+  _harvestPollTimer = setInterval(pollHarvestStatus, 5000);
+}
+
+async function pollHarvestStatus() {
+  try {
+    const res = await fetch('/api/harvest/linkedin/status');
+    if (!res.ok) return;
+    const data = await res.json();
+
+    const btn = document.getElementById('harvest-btn');
+    const statusEl = document.getElementById('harvest-status');
+
+    if (data.status === 'idle') {
+      clearInterval(_harvestPollTimer);
+      _harvestPollTimer = null;
+
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'LinkedIn Jobs Pages';
+      }
+      if (statusEl) {
+        if (data.last_run_result === 'ok') {
+          const ts = data.last_run_at ? new Date(data.last_run_at).toLocaleTimeString() : '';
+          statusEl.textContent = `Last run: OK${ts ? ' at ' + ts : ''}`;
+          statusEl.style.color = 'var(--score-high, #4ade80)';
+        } else if (data.last_run_result === 'error') {
+          statusEl.textContent = 'Last run: error';
+          statusEl.style.color = 'var(--score-low, #f87171)';
+        } else {
+          statusEl.textContent = '';
+        }
+      }
+
+      // Reload jobs data now that harvest is done
+      if (location.hash === '#jobs' || location.hash === '') {
+        navigate('jobs');
+      }
+    } else {
+      // Still running
+      if (btn) { btn.disabled = true; btn.textContent = 'Running…'; }
+      if (statusEl) { statusEl.textContent = 'Running… (this may take several minutes)'; statusEl.style.color = ''; }
+    }
+  } catch (e) {
+    // Silently ignore poll errors — server may be temporarily busy
+  }
+}
+
+async function checkHarvestStatusOnLoad() {
+  try {
+    const res = await fetch('/api/harvest/linkedin/status');
+    if (!res.ok) return;
+    const data = await res.json();
+    const btn = document.getElementById('harvest-btn');
+    const statusEl = document.getElementById('harvest-status');
+    if (!btn) return;
+
+    if (data.status === 'running') {
+      btn.disabled = true;
+      btn.textContent = 'Running…';
+      if (statusEl) { statusEl.textContent = 'Running… (this may take several minutes)'; }
+      startHarvestPolling();
+    } else {
+      if (data.last_run_result === 'ok') {
+        const ts = data.last_run_at ? new Date(data.last_run_at).toLocaleTimeString() : '';
+        if (statusEl) { statusEl.textContent = `Last run: OK${ts ? ' at ' + ts : ''}`; statusEl.style.color = 'var(--score-high, #4ade80)'; }
+      } else if (data.last_run_result === 'error') {
+        if (statusEl) { statusEl.textContent = 'Last run: error'; statusEl.style.color = 'var(--score-low, #f87171)'; }
+      }
+    }
+  } catch (e) { /* ignore */ }
+}
+
+async function startScorer() {
+  const btn = document.getElementById('scorer-btn');
+  const statusEl = document.getElementById('scorer-status');
+  if (!btn || btn.disabled) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Running…';
+  if (statusEl) statusEl.textContent = 'Running… (this may take several minutes)';
+
+  try {
+    const res = await fetch('/api/score/run', { method: 'POST' });
+    if (res.status === 409) {
+      // Already running — start polling anyway
+    } else if (!res.ok) {
+      if (statusEl) statusEl.textContent = 'Failed to start scorer.';
+      btn.disabled = false;
+      btn.textContent = 'Run Match Scorer';
+      return;
+    }
+  } catch (e) {
+    if (statusEl) statusEl.textContent = 'Failed to start scorer.';
+    btn.disabled = false;
+    btn.textContent = 'Run Match Scorer';
+    return;
+  }
+
+  startScorerPolling();
+}
+
+function startScorerPolling() {
+  if (_scorerPollTimer) return;
+  _scorerPollTimer = setInterval(pollScorerStatus, 5000);
+}
+
+async function fetchScorerProgress() {
+  try {
+    const res = await fetch('/api/score/progress');
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (e) { return null; }
+}
+
+async function pollScorerStatus() {
+  try {
+    const res = await fetch('/api/score/status');
+    if (!res.ok) return;
+    const data = await res.json();
+
+    const btn = document.getElementById('scorer-btn');
+    const statusEl = document.getElementById('scorer-status');
+
+    if (data.status === 'idle') {
+      clearInterval(_scorerPollTimer);
+      _scorerPollTimer = null;
+
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Run Match Scorer';
+      }
+      if (statusEl) {
+        if (data.last_run_result === 'ok') {
+          const ts = data.last_run_at ? new Date(data.last_run_at).toLocaleTimeString() : '';
+          statusEl.textContent = `Last run: OK${ts ? ' at ' + ts : ''}`;
+          statusEl.style.color = 'var(--score-high, #4ade80)';
+        } else if (data.last_run_result === 'error') {
+          statusEl.textContent = 'Last run: error';
+          statusEl.style.color = 'var(--score-low, #f87171)';
+        } else {
+          statusEl.textContent = '';
+        }
+      }
+
+      // Reload scores data now that scorer is done
+      if (location.hash === '#scores') {
+        navigate('scores');
+      }
+    } else {
+      // Still running — fetch progress
+      if (btn) { btn.disabled = true; btn.textContent = 'Running…'; }
+      if (statusEl) {
+        const prog = await fetchScorerProgress();
+        const progText = prog ? ` (${prog.scored} / ${prog.total})` : '';
+        statusEl.textContent = `Running…${progText}`;
+        statusEl.style.color = '';
+      }
+    }
+  } catch (e) {
+    // Silently ignore poll errors — server may be temporarily busy
+  }
+}
+
+async function checkScorerStatusOnLoad() {
+  try {
+    const res = await fetch('/api/score/status');
+    if (!res.ok) return;
+    const data = await res.json();
+    const btn = document.getElementById('scorer-btn');
+    const statusEl = document.getElementById('scorer-status');
+    if (!btn) return;
+
+    if (data.status === 'running') {
+      btn.disabled = true;
+      btn.textContent = 'Running…';
+      if (statusEl) {
+        const prog = await fetchScorerProgress();
+        const progText = prog ? ` (${prog.scored} / ${prog.total})` : '';
+        statusEl.textContent = `Running…${progText}`;
+      }
+      startScorerPolling();
+    } else {
+      if (data.last_run_result === 'ok') {
+        const ts = data.last_run_at ? new Date(data.last_run_at).toLocaleTimeString() : '';
+        if (statusEl) { statusEl.textContent = `Last run: OK${ts ? ' at ' + ts : ''}`; statusEl.style.color = 'var(--score-high, #4ade80)'; }
+      } else if (data.last_run_result === 'error') {
+        if (statusEl) { statusEl.textContent = 'Last run: error'; statusEl.style.color = 'var(--score-low, #f87171)'; }
+      }
+    }
+  } catch (e) { /* ignore */ }
+}
+
+const APP_STATUS_BADGE = {
+  applied:      'badge-blue',
+  waiting:      'badge-muted',
+  phone_screen: 'badge-amber',
+  interview:    'badge-amber',
+  offer:        'badge-green',
+  dead:         'badge-muted',
+  withdrawn:    'badge-muted',
+  saved:        'badge-muted',
+};
+
+function appStatusBadge(status) {
+  const cls = APP_STATUS_BADGE[status] || 'badge-muted';
+  return `<span class="badge ${cls}">${status || '?'}</span>`;
+}
+
+function filterApplications(filter) {
+  document.querySelectorAll('[data-appfilter]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.appfilter === filter);
+  });
+  renderApplicationsTable(filter);
+}
+
+function renderApplicationsTable(statusFilter) {
+  if (statusFilter === undefined) {
+    statusFilter = document.querySelector('[data-appfilter].active')?.dataset.appfilter || 'all';
+  }
+  const companyFilter = (document.getElementById('app-filter-company')?.value || '').toLowerCase().trim();
+
+  const data = _applicationsData.filter(r => {
+    if (statusFilter !== 'all' && r.status !== statusFilter) return false;
+    if (companyFilter && !(r.company || '').toLowerCase().includes(companyFilter)) return false;
+    return true;
+  });
+
+  const cols = [
+    { label: 'Status', render: r => {
+      const statuses = ['new','applied','waiting','phone_screen','interview','offer','rejected','withdrawn','dead'];
+      const opts = statuses.map(s =>
+        `<option value="${s}" ${r.status === s ? 'selected' : ''}>${s}</option>`
+      ).join('');
+      return `<select class="status-select" data-id="${r.id}" onchange="updateAppStatus(this)">
+        ${opts}
+      </select>`;
+    }},
+    { label: 'Company',    cls: 'cell-primary',   render: r => {
+      const name = r.company || '—';
+      const star = r.is_interesting_company ? ' <span title="Interesting Company" style="color:var(--accent);font-size:11px;">&#9733;</span>' : '';
+      return name + star;
+    }},
+    { label: 'Job Title',  cls: 'cell-primary', render: r => {
+      const title = r.job_title || '—';
+      const url = r.job_url || r.application_link;
+      if (url) {
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ext-link-title">${title}</a>`;
+      }
+      return title;
+    }},
+    { label: 'Score', render: r => scorePill(r.overall_score) },
+    { label: 'Apply Date', cls: 'cell-muted',      render: r => date(r.apply_date) },
+    { label: 'Contact',    cls: 'cell-secondary', render: r => r.contact || '—' },
+    { label: 'Notes', render: r => {
+      const val = (r.notes || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      return `<textarea class="notes-input" data-id="${r.id}" rows="2"
+        onblur="updateAppNotes(this)">${r.notes || ''}</textarea>`;
+    }},
+    { label: 'Cover Letter', render: r => {
+      const hasCL = r.cover_letter && r.cover_letter.trim().length > 0;
+      return `<button class="cl-btn ${hasCL ? 'cl-btn-has' : 'cl-btn-empty'}"
+        onclick="showCoverLetter(${r.id})">${hasCL ? '✎ Edit' : '+ Add'}</button>`;
+    }},
+  ];
+
+  document.getElementById('applications-table').innerHTML = table(cols, data,
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+    'No applications match this filter');
+}
+
+function scoreClass(n) {
+  if (n == null) return 'score-na';
+  if (n >= 75) return 'score-high';
+  if (n >= 60) return 'score-mid';
+  if (n >= 45) return 'score-low';
+  return 'score-skip';
+}
+
+function scorePill(n) {
+  if (n == null) return '<span class="score-pill score-na">—</span>';
+  return `<span class="score-pill ${scoreClass(n)}">${n}</span>`;
+}
+
+const REC_BADGE = {
+  'STRONG FIT':  'badge-green',
+  'GOOD FIT':    'badge-blue',
+  'MARGINAL FIT':'badge-amber',
+  'SKIP':        'badge-muted',
+};
+
+function recBadge(rec) {
+  return `<span class="badge ${REC_BADGE[rec] || 'badge-muted'}">${rec || '?'}</span>`;
+}
+
+function arrBadge(arr) {
+  const m = { 'Remote':'badge-green', 'Hybrid':'badge-amber', 'On-site':'badge-blue', 'Not stated':'badge-muted' };
+  return `<span class="badge ${m[arr] || 'badge-muted'}">${arr || 'Not stated'}</span>`;
+}
+
+function getScoreFilters() {
+  const fitBoxes  = document.querySelectorAll('[data-fit-filter]');
+  const arrBoxes  = document.querySelectorAll('[data-arr-filter]');
+  const fitSet = fitBoxes.length
+    ? new Set([...fitBoxes].filter(el => el.checked).map(el => el.dataset.fitFilter))
+    : new Set(['STRONG FIT','GOOD FIT','MARGINAL FIT','SKIP','']);
+  const arrSet = arrBoxes.length
+    ? new Set([...arrBoxes].filter(el => el.checked).map(el => el.dataset.arrFilter))
+    : new Set(['Remote','Hybrid','On-site','Not stated','']);
+  const recencyEl = document.querySelector('[data-recency-filter]:checked');
+  const recency = recencyEl ? recencyEl.dataset.recencyFilter : 'all';
+  return { fitSet, arrSet, recency };
+}
+
+function renderScoresTable() {
+  const { fitSet, arrSet, recency } = getScoreFilters();
+
+  // Compute recency cutoffs once
+  let todayStr = null;
+  let lastRunCutoff = null;
+  if (recency === 'today') {
+    todayStr = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+  } else if (recency === 'lastrun') {
+    const timestamps = _scoresData
+      .map(j => j.scored_at)
+      .filter(Boolean)
+      .map(s => new Date(s).getTime())
+      .filter(t => !isNaN(t));
+    if (timestamps.length) {
+      const maxTs = Math.max(...timestamps);
+      lastRunCutoff = maxTs - 2 * 60 * 60 * 1000; // 2 hours before max
+    }
+  }
+
+  const filtered = _scoresData.filter(j => {
+    const fit = j.recommendation || '';
+    const arr = j.work_arrangement || 'Not stated';
+    if (!fitSet.has(fit) || !arrSet.has(arr)) return false;
+    if (recency === 'today') {
+      if (!j.scored_at) return false;
+      return j.scored_at.slice(0, 10) === todayStr;
+    }
+    if (recency === 'lastrun') {
+      if (!j.scored_at || lastRunCutoff === null) return false;
+      return new Date(j.scored_at).getTime() >= lastRunCutoff;
+    }
+    return true;
+  });
+  const data = applySortToData(filtered, _scoresSort);
+  _visibleScoreIds = data.map(j => j.id);
+
+  // Update archive button and shown count
+  const archiveBtn = document.getElementById('archive-btn');
+  if (archiveBtn) archiveBtn.textContent = `Archive Shown (${data.length})`;
+  const statTotal = document.getElementById('score-stat-total');
+  if (statTotal) statTotal.textContent = data.length;
+
+  const cols = [
+    { label: 'ID',          sortKey: 'id',           render: r => `<span class="cell-muted">${r.id}</span>` },
+    { label: 'Title',       sortKey: 'job_title',    cls: 'cell-primary', render: r =>
+        `<a class="clickable" onclick="showAssessment(${r.id})">${r.job_title || '?'}</a>` +
+        (r.job_url ? ` <a href="${r.job_url}" target="_blank" class="ext-link" title="Open listing">↗</a>` : '')
+    },
+    { label: 'Company',     sortKey: 'company',      cls: 'cell-secondary', render: r => r.company || '—' },
+    { label: 'Source',      sortKey: 'job_board',    render: r => `<span class="badge badge-muted">${r.job_board || '—'}</span>` },
+    { label: 'Score',       sortKey: 'overall_score', render: r => scorePill(r.overall_score) },
+    { label: 'Fit',         sortKey: 'recommendation', render: r => recBadge(r.recommendation) },
+    { label: 'Arrangement', sortKey: 'work_arrangement', render: r => arrBadge(r.work_arrangement) },
+    { label: 'Scored',      sortKey: 'scored_at',    cls: 'cell-muted', render: r => date(r.scored_at) },
+    { label: 'Apply', render: r =>
+        `<button class="apply-toggle ${r.apply_flag ? 'apply-on' : ''}" onclick="toggleApply(event,${r.id},${r.apply_flag})">${r.apply_flag ? '★' : '☆'}</button>`
+    },
+  ];
+
+  document.getElementById('scores-table').innerHTML = table(cols, data,
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+    'No jobs match this filter', _scoresSort, 'sortScores');
+}
+
+function sortScores(col) {
+  if (_scoresSort.col === col) _scoresSort.dir *= -1;
+  else { _scoresSort.col = col; _scoresSort.dir = 1; }
+  renderScoresTable();
+}
+
+async function archiveShown() {
+  const ids = [..._visibleScoreIds];
+  if (!ids.length) return;
+  const ok = window.confirm(
+    `Really, really archive ${ids.length} job${ids.length === 1 ? '' : 's'}?\n\nThis hides them from all views. There is no undo in the UI.`
+  );
+  if (!ok) return;
+  const btn = document.getElementById('archive-btn');
+  if (btn) btn.disabled = true;
+  try {
+    await fetch('/api/jobs/archive', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ ids })
+    });
+    navigate('scores');
+  } catch(e) {
+    if (btn) btn.disabled = false;
+  }
+}
+
+async function toggleApply(e, jobId, currentVal) {
+  e.stopPropagation();
+  const newVal = currentVal ? 0 : 1;
+  await fetch(`/api/jobs/${jobId}/apply/${newVal}`, { method: 'POST' });
+  const job = _scoresData.find(j => j.id === jobId);
+  if (job) {
+    job.apply_flag = newVal;
+    renderScoresTable();
+  }
+}
+
+function showAssessment(jobId) {
+  const j = _scoresData.find(r => r.id === jobId);
+  if (!j) return;
+
+  const strengths = (j.strengths || '').split('|').map(s => s.trim()).filter(Boolean);
+  const gaps      = (j.gaps      || '').split('|').map(s => s.trim()).filter(Boolean);
+
+  const scoreGrid = ['overall_score','skills_score','seniority_score','work_type_score']
+    .map((k, i) => {
+      const labels = ['Overall','Skills','Seniority','Work Type'];
+      const v = j[k];
+      return `<div class="ascore-card">
+        <div class="ascore-value ${scoreClass(v)}">${v ?? '—'}</div>
+        <div class="ascore-label">${labels[i]}</div>
+      </div>`;
+    }).join('');
+
+  const salaryLine = (j.salary_range && j.salary_range !== 'Not stated')
+    ? `<span class="assessment-meta-item">${j.salary_range}</span>` : '';
+
+  const html = `
+    <div class="assessment-scores">${scoreGrid}</div>
+    <div class="assessment-meta">
+      ${arrBadge(j.work_arrangement)}
+      ${salaryLine}
+    </div>
+    <p class="assessment-summary">${j.match_summary || ''}</p>
+    ${j.reasoning ? `<div class="assessment-section assessment-reasoning">
+      <div class="assessment-section-label">Evaluation Reasoning</div>
+      <p class="assessment-reasoning-text">${j.reasoning}</p>
+    </div>` : ''}
+    ${strengths.length ? `<div class="assessment-section">
+      <div class="assessment-section-label">Strengths</div>
+      <ul>${strengths.map(s => `<li>${s}</li>`).join('')}</ul>
+    </div>` : ''}
+    ${gaps.length ? `<div class="assessment-section">
+      <div class="assessment-section-label">Gaps</div>
+      <ul>${gaps.map(s => `<li>${s}</li>`).join('')}</ul>
+    </div>` : ''}
+    <div class="assessment-actions">
+      <button class="apply-toggle ${j.apply_flag ? 'apply-on' : ''}" id="modal-apply-btn"
+        onclick="toggleApply(event,${j.id},${j.apply_flag}); document.getElementById('modal-apply-btn').classList.toggle('apply-on'); this.textContent = ${j.apply_flag ? "'☆ Flag to Apply'" : "'★ Flagged to Apply'"}">
+        ${j.apply_flag ? '★ Flagged to Apply' : '☆ Flag to Apply'}
+      </button>
+      <a class="clickable" onclick="showJobDescription(${j.id},'${(j.job_title||'').replace(/'/g,"\\'")} @ ${(j.company||'').replace(/'/g,"\\'")}')">View Description</a>
+    </div>`;
+
+  document.getElementById('modal-title').textContent = `${j.job_title || '?'} @ ${j.company || '?'}`;
+  document.getElementById('modal-body').className = 'modal-body';
+  document.getElementById('modal-body').innerHTML = html;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+// ── Model badge ───────────────────────────────────────────────
+function modelBadge(model) {
+  if (!model) return '—';
+  if (model.includes('opus'))   return `<span class="badge badge-green">Opus</span>`;
+  if (model.includes('sonnet')) return `<span class="badge badge-blue">Sonnet</span>`;
+  if (model.includes('haiku'))  return `<span class="badge badge-muted">Haiku</span>`;
+  return `<span class="badge badge-muted">${model}</span>`;
+}
+
+// ── Badges ────────────────────────────────────────────────────
+const STATUS_BADGE = {
+  active:      '<span class="badge badge-green">Active</span>',
+  completed:   '<span class="badge badge-blue">Completed</span>',
+  in_progress: '<span class="badge badge-blue">In Progress</span>',
+  pending:     '<span class="badge badge-amber">Pending</span>',
+  on_hold:     '<span class="badge badge-amber">On Hold</span>',
+  inactive:    '<span class="badge badge-muted">Inactive</span>',
+  cancelled:   '<span class="badge badge-muted">Cancelled</span>',
+  researching: '<span class="badge badge-accent">Researching</span>',
+  hiring:      '<span class="badge badge-accent">Hiring</span>',
+};
+
+const PRIORITY_BADGE = {
+  high:   '<span class="badge badge-red">High</span>',
+  normal: '<span class="badge badge-accent">Normal</span>',
+  low:    '<span class="badge badge-muted">Low</span>',
+};
+
+function badge(map, val) {
+  return map[val] || `<span class="badge badge-muted">${val}</span>`;
+}
+
+function date(str) {
+  return str ? str.slice(0, 10) : '—';
+}
+
+function empty(icon, text) {
+  return `<div class="empty-state">
+    <div class="empty-icon">${icon}</div>
+    <p class="empty-text">${text}</p>
+  </div>`;
+}
+
+function table(cols, rows, emptyIcon, emptyText, sortState, sortFn) {
+  if (!rows.length) return empty(emptyIcon, emptyText);
+  const head = cols.map(c => {
+    if (c.sortKey && sortState && sortFn) {
+      const active = sortState.col === c.sortKey;
+      const ind = active ? (sortState.dir === 1 ? ' ▲' : ' ▼') : '';
+      return `<th class="sortable${active?' sort-active':''}" onclick="${sortFn}('${c.sortKey}')">${c.label}<span class="sort-ind">${ind}</span></th>`;
+    }
+    return `<th>${c.label}</th>`;
+  }).join('');
+  const body = rows.map(r =>
+    '<tr>' + cols.map(c => `<td class="${c.cls||''}">${c.render(r)}</td>`).join('') + '</tr>'
+  ).join('');
+  return `<div class="table-card"><table>
+    <thead><tr>${head}</tr></thead>
+    <tbody>${body}</tbody>
+  </table></div>`;
+}
+
+function applySortToData(data, sortState) {
+  if (!sortState.col) return data;
+  const col = sortState.col;
+  const dir = sortState.dir;
+  return [...data].sort((a, b) => {
+    const av = a[col] ?? '';
+    const bv = b[col] ?? '';
+    if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * dir;
+    return String(av).localeCompare(String(bv)) * dir;
+  });
+}
+
+// ── Jobs sort + render ────────────────────────────────────────
+function sortJobs(col) {
+  if (_jobsSort.col === col) _jobsSort.dir *= -1;
+  else { _jobsSort.col = col; _jobsSort.dir = 1; }
+  renderJobsTable();
+}
+
+function renderJobsTable() {
+  const data = applySortToData(_jobsData, _jobsSort);
+  const cols = [
+    { label: 'ID',         sortKey: 'id',               render: r => `<span class="cell-muted">${r.id}</span>` },
+    { label: 'Title',      sortKey: 'job_title',        cls: 'cell-primary', render: r =>
+        `<a class="clickable" onclick="showJobDescription(${r.id}, '${(r.job_title||'').replace(/'/g,"\\'")} @ ${(r.company||'').replace(/'/g,"\\'")}')">${r.job_title || '?'}</a>` +
+        (r.job_url ? ` <a href="${r.job_url}" target="_blank" class="ext-link" title="Open listing">↗</a>` : '')
+    },
+    { label: 'Company',    sortKey: 'company',          cls: 'cell-secondary', render: r => r.company || '—' },
+    { label: 'Source',     sortKey: 'job_board',        render: r => `<span class="badge badge-muted">${r.job_board || '—'}</span>` },
+    { label: 'Location',   sortKey: 'location',         cls: 'cell-secondary', render: r => r.location || '—' },
+    { label: 'Type',       sortKey: 'work_type',        render: r => {
+      const m = { remote:'badge-green', hybrid:'badge-amber', onsite:'badge-blue', unknown:'badge-muted' };
+      return `<span class="badge ${m[r.work_type]||'badge-muted'}">${r.work_type||'?'}</span>`;
+    }},
+    { label: 'Status',     sortKey: 'status',           render: r => {
+      const opts = ['new','scored','skip','duplicate'].map(s =>
+        `<option value="${s}"${r.status===s?' selected':''}>${s}</option>`
+      ).join('');
+      return `<select class="status-select" onchange="updateJobStatus(${r.id}, this.value)">${opts}</select>`;
+    }},
+    { label: 'Seen',       sortKey: 'first_date_seen',  cls: 'cell-muted', render: r => date(r.first_date_seen) },
+  ];
+  document.getElementById('jobs-table').innerHTML = table(cols, data,
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>',
+    'No jobs harvested yet', _jobsSort, 'sortJobs');
+}
+
+async function updateJobStatus(id, val) {
+  await fetch(`/api/jobs/${id}/status`, {
+    method: 'PATCH',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ status: val })
+  });
+  const row = _jobsData.find(r => r.id === id);
+  if (row) row.status = val;
+}
+
+// ── Views ─────────────────────────────────────────────────────
+const VIEWS = {
+  roster: {
+    title: 'Team Roster',
+    subtitle: 'Active members and their roles',
+    api: '/api/roster',
+    render(data) {
+      const active = data.filter(m => m.status === 'active').length;
+      const stats = `<div class="stats-row">
+        <div class="stat-card"><div class="stat-value">${data.length}</div><div class="stat-label">Total Members</div></div>
+        <div class="stat-card"><div class="stat-value">${active}</div><div class="stat-label">Active</div></div>
+      </div>`;
+      const cols = [
+        { label: '',        cls: 'cell-avatar',     render: r => `<a class="clickable" onclick="navigate('member/${r.name.toLowerCase()}')"><img class="avatar" src="/api/member/${r.name.toLowerCase()}/avatar" alt="${r.name}"></a>` },
+        { label: 'Name',    cls: 'cell-primary',    render: r => `<a class="clickable" onclick="navigate('member/${r.name.toLowerCase()}')">${r.name}</a>` },
+        { label: 'Role',                             render: r => r.role },
+        { label: 'Domain',  cls: 'cell-secondary',  render: r => r.domain },
+        { label: 'Model',                            render: r => modelBadge(r.model) },
+        { label: 'Status',                           render: r => badge(STATUS_BADGE, r.status) },
+        { label: 'Joined',  cls: 'cell-muted',       render: r => date(r.date_joined) },
+      ];
+      return stats + table(cols, data,
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>',
+        'No team members yet');
+    }
+  },
+
+  projects: {
+    title: 'Projects',
+    subtitle: 'Ongoing and completed work',
+    api: '/api/projects',
+    render(data) {
+      const cols = [
+        { label: 'Name',        cls: 'cell-primary',   render: r => r.name },
+        { label: 'Description', cls: 'cell-secondary',  render: r => r.description || '—' },
+        { label: 'Status',                              render: r => badge(STATUS_BADGE, r.status) },
+        { label: 'Created',     cls: 'cell-muted',      render: r => date(r.created_at) },
+      ];
+      return table(cols, data,
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>',
+        'No projects yet');
+    }
+  },
+
+  tasks: {
+    title: 'Tasks',
+    subtitle: 'Work items across all projects',
+    api: '/api/tasks',
+    render(data) {
+      const cols = [
+        { label: 'Title',       cls: 'cell-primary',   render: r => r.title },
+        { label: 'Project',     cls: 'cell-secondary',  render: r => r.project_name || '—' },
+        { label: 'Assigned To', cls: 'cell-secondary',  render: r => r.assignee_name || '—' },
+        { label: 'Priority',                            render: r => badge(PRIORITY_BADGE, r.priority) },
+        { label: 'Status',                              render: r => badge(STATUS_BADGE, r.status) },
+        { label: 'Created',     cls: 'cell-muted',      render: r => date(r.created_at) },
+      ];
+      return table(cols, data,
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+        'No tasks yet');
+    }
+  },
+
+  jobs: {
+    title: 'Jobs',
+    subtitle: 'Harvested job listings',
+    api: '/api/jobs',
+    render(data) {
+      _jobsData = data;
+      _jobsSort = { col: null, dir: 1 };
+      const total  = data.length;
+      const isNew  = data.filter(j => j.is_new).length;
+      const remote = data.filter(j => j.work_type === 'remote').length;
+      const harvestBar = `<div class="harvest-bar">
+        <button id="harvest-btn" class="harvest-btn" onclick="startHarvest()">LinkedIn Jobs Pages</button>
+        <span id="harvest-status" class="harvest-status"></span>
+      </div>`;
+      const stats = `<div class="stats-row">
+        <div class="stat-card"><div class="stat-value">${total}</div><div class="stat-label">Total Jobs</div></div>
+        <div class="stat-card"><div class="stat-value">${isNew}</div><div class="stat-label">New</div></div>
+        <div class="stat-card"><div class="stat-value">${remote}</div><div class="stat-label">Remote</div></div>
+      </div>`;
+      return harvestBar + stats + '<div id="jobs-table"></div>';
+    },
+    afterRender() {
+      renderJobsTable();
+      checkHarvestStatusOnLoad();
+    }
+  },
+
+  scores: {
+    title: 'Match Scores',
+    subtitle: 'AI-scored fit assessments — click any row to review',
+    api: '/api/scores',
+    render(data) {
+      _scoresData = data;
+      _scoresSort = { col: null, dir: 1 };
+      const strong  = data.filter(j => j.recommendation === 'STRONG FIT').length;
+      const good    = data.filter(j => j.recommendation === 'GOOD FIT').length;
+      const flagged = data.filter(j => j.apply_flag).length;
+
+      const scoreBar = `<div class="harvest-bar">
+        <button id="scorer-btn" class="harvest-btn" onclick="startScorer()">Run Match Scorer</button>
+        <button id="archive-btn" class="archive-btn" onclick="archiveShown()">Archive Shown (0)</button>
+        <span id="scorer-status" class="harvest-status"></span>
+      </div>`;
+
+      const stats = `<div class="stats-row">
+        <div class="stat-card"><div class="stat-value" id="score-stat-total">${data.length}</div><div class="stat-label">Shown</div></div>
+        <div class="stat-card"><div class="stat-value score-high-text">${strong}</div><div class="stat-label">Strong Fit</div></div>
+        <div class="stat-card"><div class="stat-value score-mid-text">${good}</div><div class="stat-label">Good Fit</div></div>
+        <div class="stat-card"><div class="stat-value">${flagged}</div><div class="stat-label">Flagged</div></div>
+      </div>`;
+
+      const fitFilters = `<div class="filter-group">
+        <div class="filter-group-label">Fit</div>
+        <label class="filter-checkbox"><input type="checkbox" data-fit-filter="STRONG FIT" checked onchange="renderScoresTable()"> Strong Fit</label>
+        <label class="filter-checkbox"><input type="checkbox" data-fit-filter="GOOD FIT" checked onchange="renderScoresTable()"> Good Fit</label>
+        <label class="filter-checkbox"><input type="checkbox" data-fit-filter="MARGINAL FIT" checked onchange="renderScoresTable()"> Marginal Fit</label>
+        <label class="filter-checkbox"><input type="checkbox" data-fit-filter="SKIP" checked onchange="renderScoresTable()"> Skip</label>
+        <label class="filter-checkbox"><input type="checkbox" data-fit-filter="" checked onchange="renderScoresTable()"> Unknown</label>
+      </div>`;
+
+      const arrFilters = `<div class="filter-group">
+        <div class="filter-group-label">Arrangement</div>
+        <label class="filter-checkbox"><input type="checkbox" data-arr-filter="Remote" checked onchange="renderScoresTable()"> Remote</label>
+        <label class="filter-checkbox"><input type="checkbox" data-arr-filter="Hybrid" checked onchange="renderScoresTable()"> Hybrid</label>
+        <label class="filter-checkbox"><input type="checkbox" data-arr-filter="On-site" checked onchange="renderScoresTable()"> On-site</label>
+        <label class="filter-checkbox"><input type="checkbox" data-arr-filter="Not stated" checked onchange="renderScoresTable()"> Not stated</label>
+      </div>`;
+
+      const recencyFilters = `<div class="filter-group">
+        <div class="filter-group-label">Recency</div>
+        <label class="filter-checkbox"><input type="radio" name="recency-filter" data-recency-filter="all" checked onchange="renderScoresTable()"> All</label>
+        <label class="filter-checkbox"><input type="radio" name="recency-filter" data-recency-filter="today" onchange="renderScoresTable()"> Today</label>
+        <label class="filter-checkbox"><input type="radio" name="recency-filter" data-recency-filter="lastrun" onchange="renderScoresTable()"> Last Run</label>
+      </div>`;
+
+      return `${scoreBar}${stats}<div class="filter-groups">${fitFilters}${arrFilters}${recencyFilters}</div><div id="scores-table"></div>`;
+    },
+    afterRender() {
+      renderScoresTable();
+      checkScorerStatusOnLoad();
+    }
+  },
+
+  applications: {
+    title: 'Applications',
+    subtitle: 'Tracked job applications',
+    api: '/api/applications',
+    render(data) {
+      _applicationsData = data;
+
+      const total    = data.length;
+      const active   = data.filter(r => ['applied','waiting','phone_screen','interview'].includes(r.status)).length;
+      const offers   = data.filter(r => r.status === 'offer').length;
+
+      const stats = `<div class="stats-row">
+        <div class="stat-card"><div class="stat-value">${total}</div><div class="stat-label">Total</div></div>
+        <div class="stat-card"><div class="stat-value">${active}</div><div class="stat-label">In Progress</div></div>
+        <div class="stat-card"><div class="stat-value score-high-text">${offers}</div><div class="stat-label">Offers</div></div>
+      </div>`;
+
+      const statusCounts = {};
+      data.forEach(r => { statusCounts[r.status] = (statusCounts[r.status] || 0) + 1; });
+
+      const statusLabels = {
+        new: 'New', applied: 'Applied', waiting: 'Waiting', phone_screen: 'Phone Screen',
+        interview: 'Interview', offer: 'Offer', rejected: 'Rejected', dead: 'Dead',
+        withdrawn: 'Withdrawn'
+      };
+
+      const tabs = [
+        `<button class="filter-tab" data-appfilter="all" onclick="filterApplications('all')">All <span class="filter-count">${data.length}</span></button>`,
+        ...Object.entries(statusCounts)
+          .sort((a, b) => b[1] - a[1])
+          .map(([s, cnt]) =>
+            `<button class="filter-tab" data-appfilter="${s}" onclick="filterApplications('${s}')">${statusLabels[s] || s} <span class="filter-count">${cnt}</span></button>`
+          )
+      ].join('');
+
+      const filters = `<div class="filter-tabs">${tabs}</div>
+      <div style="margin-top:8px;">
+        <input id="app-filter-company" type="text" placeholder="Filter by company…"
+          oninput="renderApplicationsTable()"
+          style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text-primary);font-size:13px;font-family:inherit;outline:none;">
+      </div>`;
+
+      return `${stats}${filters}<div id="applications-table"></div>`;
+    },
+    afterRender() {
+      const hasNew = _applicationsData.some(r => r.status === 'new');
+      const defaultFilter = hasNew ? 'new' : 'all';
+      const btn = document.querySelector(`[data-appfilter="${defaultFilter}"]`);
+      if (btn) btn.classList.add('active');
+      renderApplicationsTable(defaultFilter);
+    }
+  },
+
+  hiring: {
+    title: 'Hiring Pipeline',
+    subtitle: 'All hires past and present',
+    api: '/api/hiring',
+    render(data) {
+      const cols = [
+        { label: 'Role',        cls: 'cell-primary',  render: r => r.role_requested },
+        { label: 'Status',                            render: r => badge(STATUS_BADGE, r.status) },
+        { label: 'Hired',       cls: 'cell-secondary', render: r => r.hired_name ? `<a class="clickable" onclick="showHiringBrief(${r.id}, '${r.role_requested}')">${r.hired_name}</a>` : '—' },
+        { label: 'Requested',   cls: 'cell-muted',     render: r => date(r.requested_at) },
+        { label: 'Completed',   cls: 'cell-muted',     render: r => date(r.completed_at) },
+      ];
+      return table(cols, data,
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>',
+        'No hiring activity yet');
+    }
+  },
+};
+
+// ── Modal ─────────────────────────────────────────────────────
+function openModal(title, markdown) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-body').innerHTML = marked.parse(markdown);
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+async function showMemberProfile(name) {
+  const res = await fetch(`/api/member/${encodeURIComponent(name)}/profile`);
+  if (!res.ok) return;
+  openModal(name, await res.text());
+}
+
+async function showJobDescription(jobId, label) {
+  const res = await fetch(`/api/jobs/${jobId}/description`);
+  if (!res.ok) { openModal(label, '_No description available._'); return; }
+  const text = await res.text();
+  // Render as plain text in a <pre> block
+  document.getElementById('modal-title').textContent = label;
+  document.getElementById('modal-body').innerHTML = `<pre class="job-desc">${text.replace(/</g,'&lt;')}</pre>`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+async function showHiringBrief(hiringId, roleName) {
+  const res = await fetch(`/api/hiring/${hiringId}/brief`);
+  if (!res.ok) { openModal(roleName, '_No candidate brief available for this hire._'); return; }
+  openModal(`Candidate Brief — ${roleName}`, await res.text());
+}
+
+async function renderMemberPage(name) {
+  const appEl = document.getElementById('app');
+  appEl.innerHTML = '<div class="loading">Loading…</div>';
+
+  const [profileRes, rosterRes] = await Promise.all([
+    fetch(`/api/member/${encodeURIComponent(name)}/profile`),
+    fetch('/api/roster')
+  ]);
+
+  const profileMd = profileRes.ok ? await profileRes.text() : '_Profile not found._';
+  const roster = rosterRes.ok ? await rosterRes.json() : [];
+  const member = roster.find(m => m.name.toLowerCase() === name.toLowerCase()) || {};
+
+  appEl.innerHTML = `
+    <div class="member-page">
+      <button class="back-btn" onclick="navigate('roster')">← Roster</button>
+      <div class="member-hero">
+        <img class="member-avatar-full" src="/api/member/${name.toLowerCase()}/avatar/full" alt="${member.name || name}">
+        <div class="member-hero-info">
+          <h1 class="member-name">${member.name || name}</h1>
+          <div class="member-role">${member.role || ''}</div>
+          <div class="member-domain cell-muted">${member.domain || ''}</div>
+          ${member.model ? `<div class="member-model" style="margin-top:8px;">${modelBadge(member.model)}</div>` : ''}
+        </div>
+      </div>
+      <div class="member-profile markdown">${marked.parse(profileMd)}</div>
+    </div>
+  `;
+}
+
+async function updateAppStatus(el) {
+  const id = el.dataset.id;
+  const status = el.value;
+  await fetch(`/api/applications/${id}`, {
+    method: 'PATCH',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ status })
+  });
+  // update local data so filters stay in sync
+  const row = _applicationsData.find(r => r.id == id);
+  if (row) row.status = status;
+}
+
+function showCoverLetter(appId) {
+  const row = _applicationsData.find(r => r.id === appId);
+  if (!row) return;
+  document.getElementById('modal-title').textContent = `Cover Letter — ${row.company || ''}`;
+  document.getElementById('modal-body').classList.remove('markdown');
+  document.getElementById('modal-body').style.whiteSpace = '';
+  document.getElementById('modal-body').innerHTML = `
+    <textarea id="cl-editor" style="width:100%;min-height:320px;font-family:inherit;font-size:13px;
+      line-height:1.6;padding:12px;border:1px solid var(--border);border-radius:6px;
+      background:var(--surface);color:var(--text-primary);resize:vertical;box-sizing:border-box;"
+    >${row.cover_letter || ''}</textarea>
+    <div style="margin-top:12px;display:flex;justify-content:flex-end;">
+      <button onclick="saveCoverLetter(${appId})"
+        style="padding:6px 18px;border-radius:6px;background:var(--accent);color:#fff;
+        border:none;font-size:13px;font-family:inherit;cursor:pointer;">Save</button>
+    </div>`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+async function saveCoverLetter(appId) {
+  const text = document.getElementById('cl-editor').value;
+  await fetch(`/api/applications/${appId}`, {
+    method: 'PATCH',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ cover_letter: text })
+  });
+  const row = _applicationsData.find(r => r.id === appId);
+  if (row) row.cover_letter = text;
+  closeModal();
+  renderApplicationsTable();
+}
+
+async function updateAppNotes(el) {
+  const id = el.dataset.id;
+  const notes = el.value;
+  await fetch(`/api/applications/${id}`, {
+    method: 'PATCH',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ notes })
+  });
+  const row = _applicationsData.find(r => r.id == id);
+  if (row) row.notes = notes;
+}
+
+// ── Router ────────────────────────────────────────────────────
+const app = document.getElementById('app');
+
+async function navigate(viewName) {
+  if (viewName.startsWith('member/')) {
+    // Setting the hash fires hashchange → route() → renderMemberPage()
+    location.hash = viewName;
+    return;
+  }
+
+  const view = VIEWS[viewName];
+  if (!view) return navigate('roster');
+
+  // Update nav
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.view === viewName);
+  });
+
+  // Show loading
+  app.innerHTML = `<div class="page-header">
+    <h1 class="page-title">${view.title}</h1>
+    <p class="page-subtitle">${view.subtitle}</p>
+  </div><div class="loading">Loading…</div>`;
+
+  try {
+    const res  = await fetch(view.api);
+    const data = await res.json();
+    app.innerHTML = `<div class="page-header">
+      <h1 class="page-title">${view.title}</h1>
+      <p class="page-subtitle">${view.subtitle}</p>
+    </div>${view.render(data)}`;
+    if (view.afterRender) view.afterRender();
+  } catch (e) {
+    app.innerHTML = `<div class="page-header">
+      <h1 class="page-title">${view.title}</h1>
+    </div><div class="empty-state"><p class="empty-text">Failed to load data</p></div>`;
+  }
+}
+
+// Hash-based routing
+function route() {
+  const hash = location.hash.replace('#', '') || 'roster';
+  if (hash.startsWith('member/')) {
+    const name = hash.slice('member/'.length);
+    // Clear active nav state — member page is not a top-level nav item
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    renderMemberPage(name);
+  } else {
+    navigate(hash);
+  }
+}
+
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>

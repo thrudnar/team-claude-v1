@@ -1,0 +1,10 @@
+{
+  "_note": "Manual face bounding box overrides for images where auto-detection fails. Format: [x, y, width, height] in pixels.",
+  "cicero.webp": [30, 10, 180, 190],
+  "iris.webp": [50, 180, 400, 440],
+  "muybridge.webp": [30, 10, 180, 170],
+  "mycroft.webp": [324, 397, 167, 167],
+  "thoth.webp": [320, 420, 390, 360],
+  "varro.webp": [240, 160, 400, 400],
+  "iain.webp": [180, 45, 360, 370]
+}

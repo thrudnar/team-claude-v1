@@ -1,0 +1,79 @@
+# ============================================================
+# team-claude-v1 .gitignore
+# Generated 2026-04-11 during repo-scrub audit
+# See: team-claude-v1-sensitive-data-tracker.xlsx for details
+# ============================================================
+
+# === Secrets & Config ===
+.env
+.claude/
+
+# === Browser Data ===
+**/browser-profile/
+
+# === Personal Content — Owner's Inbox ===
+# Cover letters, cost analysis, presentation notes (all personal)
+Owner's Inbox/
+
+# === Personal Content — Job Hunt Context ===
+# PSR stories, resume, career profiles, system prompts (22 files)
+Projects/Job Description Match Score/context/
+# Career profile with salary targets embedded in SQL
+Projects/Job Description Match Score/seed_v2_prompt.sql
+
+# === Personal Content — Team Inbox ===
+# Salary anchoring notes
+Team Inbox/Cover letter prompt v2/
+# Cover letter test prompt/response files
+Team Inbox/CoverLetterTest*
+# Full career history in prompt format
+Team Inbox/cover_letter_prompt_v1.md
+# Application logs, company tracking spreadsheets
+Team Inbox/*.xlsx
+# Demographic descriptions for AI team photos
+Team Inbox/visual_desc_*.md
+
+# === Demographic Descriptions ===
+# Ethnicity/appearance descriptions for image generation
+Projects/Team Photos/themes/dossier/prompts.txt
+
+# === Standard Python / macOS ===
+**/.venv/
+**/__pycache__/
+**/.DS_Store
+*.pyc
+
+# === SQLite databases (may contain personal application data) ===
+*.db
+*.db-journal
+*.db-wal
+
+# === IDE / Editor config ===
+.obsidian/
+
+# === Archive (may contain forgotten sensitive data) ===
+Archive/
+
+# === Private keys and certificates ===
+*.pem
+*.key
+*.p12
+*.pfx
+
+# === Environment files (all variants) ===
+.env.*
+
+# === Log files ===
+*.log
+
+# === ML model binaries ===
+*.tflite
+
+# === Node (if ever needed) ===
+node_modules/
+
+# === Debug artifacts ===
+**/debug-screenshots/
+
+# === Seed scripts with PII ===
+Projects/Job Description Match Score/scorer/seed_prompt_v1.py
