@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS job_scores (
     seniority_score       INTEGER CHECK (seniority_score BETWEEN 0 AND 100),
     work_type_score       INTEGER CHECK (work_type_score BETWEEN 0 AND 100),
     work_arrangement      TEXT,   -- extracted fact: Remote | Hybrid | On-site | Not stated
-    salary_range          TEXT,   -- extracted fact: stated range as string, stated range as string
+    salary_range          TEXT,   -- extracted fact: stated range as string
     match_summary         TEXT,   -- prose assessment (v1.1 will restructure into 3 labeled sections)
     strengths             TEXT,   -- pipe-delimited: 'strength one | strength two | strength three'
     gaps                  TEXT,   -- pipe-delimited: 'gap one | gap two | gap three'

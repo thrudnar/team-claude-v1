@@ -40,8 +40,8 @@ All scores are integers 0–100.
 | Field | What it measures |
 |-------|-----------------|
 | `overall_score` | Holistic fit — weighted combination of skills, seniority, work arrangement |
-| `skills_score` | Match between the candidate's technical/domain skills and role requirements |
-| `seniority_score` | Match between role scope/title and the candidate's target seniority level |
+| `skills_score` | Match between user's technical/domain skills and role requirements |
+| `seniority_score` | Match between role scope/title and user's target level |
 | `work_type_score` | Contextual work arrangement fit — weighs arrangement + location + comp together |
 
 **Text fields:** `match_summary`, `strengths` (pipe-delimited), `gaps` (pipe-delimited), `recommendation` (STRONG FIT / GOOD FIT / MARGINAL FIT / SKIP)
@@ -61,7 +61,7 @@ All scores are integers 0–100.
 
 **Hard disqualifiers:** stated base salary explicitly below target.
 
-**Work arrangement:** Not a hard disqualifier. Remote preferred; hybrid/on-site acceptable for strong comp in SF Bay Area or Denver metro. Cicero's prompt applies contextual judgment.
+**Work arrangement:** Not a hard disqualifier. Remote preferred; hybrid/on-site acceptable for strong comp in geography of choice. Cicero's prompt applies contextual judgment.
 
 ---
 
